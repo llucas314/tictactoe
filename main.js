@@ -4,9 +4,14 @@ let color = "red";
 
 // cycle through blocks adding eventlistener
 for(let i = 0; i < blocks.length; i++){
+    blocks[i].dataset.isClicked = false;
     blocks[i].addEventListener('click', function(e){
-        e.target.style.backgroundColor = color;
-        changeColor();
+        if (e.target.dataset.isClicked == "false"){
+            e.target.style.backgroundColor = color;
+            e.target.dataset.isClicked = true;
+            changeColor();
+        }
+        
     })
 }
 // if color is red add red to block and hover ; color is blue
@@ -17,11 +22,6 @@ for(let i = 0; i < blocks.length; i++){
 //     })
 // }
 
-function onClick(blck){
-    blck.style.backgroundColor = color;
-    changeColor();
-    blck.removeEventListener('click', onClick)
-}
 function changeColor(){
     if (color === 'red'){
         color = 'blue';
