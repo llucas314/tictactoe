@@ -27,11 +27,9 @@ body{
     width: auto;
 }
 .block:hover{
-    background-color: initial;
-}
-.red{
     background-color: red;
 }
-.blue{
+
+.blue:hover{
     background-color: blue;
 }

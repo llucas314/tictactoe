@@ -9,6 +9,7 @@ for(let i = 0; i < blocks.length; i++){
         if (e.target.dataset.isClicked == "false"){
             e.target.style.backgroundColor = color;
             e.target.dataset.isClicked = true;
+            hoverColor();
             changeColor();
         }
         
@@ -16,11 +17,11 @@ for(let i = 0; i < blocks.length; i++){
 }
 // if color is red add red to block and hover ; color is blue
 
-// function hoverColor(){
-//     blocks.forEach(block=>{
-//         block.
-//     })
-// }
+function hoverColor(){
+    blocks.forEach(block=>{
+        block.classList.toggle('blue');
+    })
+}
 
 function changeColor(){
     if (color === 'red'){
