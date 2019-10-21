@@ -33,3 +33,9 @@ body{
 .blue:hover{
     background-color: blue;
 }
+input{
+    display: none;
+}
+.show{
+    display: block;
+}

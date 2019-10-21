@@ -1,6 +1,6 @@
 const blocks = document.querySelectorAll('.block');
-
-
+const reset = document.querySelector('input');
+const outcome = document.querySelector('.outcome');
 let color = "red";
 createBoard();
 // cycle through blocks adding eventlistener
@@ -17,15 +17,22 @@ function createBoard(){
                 hoverColor();
                 changeColor();
                 if (clickedAll()){
-                    blocks.forEach(block=>{
-                        console.log('all clicked')
-                    })
+                    reset.classList.add('.show');
                 }
             }
             
         })
     }
 }
+
+reset.addEventListener('click', e=>{
+    e.preventDefault();
+    blocks.forEach(block=>{
+        block.dataset.isClicked =false;
+        block.style.backgroundColor = 'white';
+    })
+    reset.classList.remove('show')
+})
 
 function hoverColor(){
     blocks.forEach(block=>{
@@ -63,6 +70,8 @@ function checkForWin(){
     (blocks[0].style.backgroundColor === 'red' && blocks[4].style.backgroundColor === 'red' && blocks[8].style.backgroundColor === 'red')||
     (blocks[2].style.backgroundColor === 'red' && blocks[4].style.backgroundColor === 'red' && blocks[6].style.backgroundColor === 'red')
     ){
+        outcome.innerHTML = 'Red Wins!';
+        reset.classList.add('show');
         console.log('red wins');
     } else if((blocks[0].style.backgroundColor === 'blue' && blocks[1].style.backgroundColor === 'blue' && blocks[2].style.backgroundColor === 'blue')||
     (blocks[3].style.backgroundColor === 'blue' && blocks[4].style.backgroundColor === 'blue' && blocks[5].style.backgroundColor === 'blue')||
@@ -73,6 +82,8 @@ function checkForWin(){
     (blocks[0].style.backgroundColor === 'blue' && blocks[4].style.backgroundColor === 'blue' && blocks[8].style.backgroundColor === 'blue')||
     (blocks[2].style.backgroundColor === 'blue' && blocks[4].style.backgroundColor === 'blue' && blocks[6].style.backgroundColor === 'blue')
     ){
+        outcome.innerHTML = 'Red Wins!';
+        reset.classList.add('show');
         console.log('blue wins');
     }
 }
